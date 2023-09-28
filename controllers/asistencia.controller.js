@@ -1,29 +1,40 @@
 const fs = require("fs");
+const xlsx = require("xlsx");
+
 const { handleHttpError } = require("../utils/handleError");
 
 
-const URL_PUBLIC = process.env.URL_PUBLIC || null;
+const URL_PUBLIC = process.env.URL_PUBLIC || `${__dirname}/../storage`;
 const MEDIA_PATH = `${__dirname}/../storage`;
 
 const loadAttendance = async (req, res) => {
-    console.log( "asdfdsnfasdhfkjlasklfjhfklhklasdfklhask" )
     try {
         const { filename } = req.file;
-        console.log('------------>', filename)
-
         const body = {
           url: `${URL_PUBLIC}/${filename}`,
           filename: filename,
         };
-        
+
+        readFile( body.url )
+
         res.send({ load:'Carga con éxito' })
       } catch (e) {
         handleHttpError(res, e);
       }
 };
 
- const readFile = async (req, res) => {
- 
+const readFile = async (ruta) => {
+  const workbook = xlsx.readFile(ruta);
+  const worksheet = workbook.SheetNames;
+  const sheet = worksheet[0];
+  const dataExcel = xlsx.utils.sheet_to_json(workbook.Sheets[sheet], { header: 1 });
+  console.log('======>', JSON.stringify( dataExcel ) );
+  // for( const itemFila of dataExcel ){
+  //   console.log('======>', itemFila);
+  // }
+
+
+  return dataExcel;
 };
 
 // const findOne = async (req, res) => {

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router(); 
 const { upload } = require("../utils/handleStore");
-const  { loadAttendance } = require('../controllers/asistencia.controller')
+const  { loadAttendance, readFile } = require('../controllers/asistencia.controller')
 
 router.post("/loadAttendance", upload.single("controlAsistencia"), loadAttendance);
 
