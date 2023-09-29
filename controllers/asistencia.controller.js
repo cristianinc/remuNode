@@ -23,18 +23,22 @@ const loadAttendance = async (req, res) => {
       }
 };
 
-const readFile = async (ruta) => {
+const readFile = async (req, res, ruta = '') => {
+  ruta =  `${URL_PUBLIC}/file-1695949016353.xlsx`
   const workbook = xlsx.readFile(ruta);
   const worksheet = workbook.SheetNames;
   const sheet = worksheet[0];
-  const dataExcel = xlsx.utils.sheet_to_json(workbook.Sheets[sheet], { header: 1 });
-  console.log('======>', JSON.stringify( dataExcel ) );
-  // for( const itemFila of dataExcel ){
-  //   console.log('======>', itemFila);
-  // }
+  const dataExcel = xlsx.utils.sheet_to_json(workbook.Sheets[sheet], {raw: false});
 
 
-  return dataExcel;
+
+  for( const itemFila of dataExcel ){
+    console.log('======>', itemFila);
+  }
+
+  console.log('lkaksdjfhjahkflhaklsdhfklashdklfhaskld');
+
+  return res.json({ ok: JSON.stringify(dataExcel) });
 };
 
 // const findOne = async (req, res) => {
