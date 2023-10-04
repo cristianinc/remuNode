@@ -1,34 +1,34 @@
 const { handleHttpError } = require("../utils/handleError");
-const { afpModel } = require("../models");
+const { seguroCesantiaModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
 
 
-const addAfp = async (req, res) => {
+const addSeguroCesantia = async (req, res) => {
   try {
-    res.render('partials/afp/add')
+    res.render('partials/segurocesantia/add')
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const editAfp = async (req, res) => {
+const editSeguroCesantia = async (req, res) => {
   try {
     //req = matchedData(req); //revisar funcionamiento
     const { id } = req.params;
-    const data = await afpModel.findById(id);
-    res.render('partials/afp/edit', { data })
+    const data = await seguroCesantiaModel.findById(id);
+    res.render('partials/segurocesantia/edit', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const getAfp = async (req, res) => {
-  console.log('muestyra todas las afp disponibles');
+const getSeguroCesantia = async (req, res) => {
+  console.log('muestyra todas las segurocesantia disponibles');
   try {
-    const data = await afpModel.find({});
+    const data = await seguroCesantiaModel.find({});
     console.log(data)
-    res.render('partials/afp/list', { data })
+    res.render('partials/segurocesantia/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
@@ -106,4 +106,4 @@ const getAfp = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAfp, addAfp, editAfp };
+module.exports = { getSeguroCesantia, addSeguroCesantia, editSeguroCesantia };

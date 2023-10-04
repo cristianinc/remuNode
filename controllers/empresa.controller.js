@@ -1,34 +1,33 @@
 const { handleHttpError } = require("../utils/handleError");
-const { afpModel } = require("../models");
+const { empresaModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
 
 
-const addAfp = async (req, res) => {
+const addEmpresa = async (req, res) => {
   try {
-    res.render('partials/afp/add')
+    res.render('partials/empresa/add')
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const editAfp = async (req, res) => {
+const editEmpresa = async (req, res) => {
   try {
     //req = matchedData(req); //revisar funcionamiento
     const { id } = req.params;
-    const data = await afpModel.findById(id);
-    res.render('partials/afp/edit', { data })
+    const data = await empresaModel.findById(id);
+    res.render('partials/empresa/edit', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const getAfp = async (req, res) => {
-  console.log('muestyra todas las afp disponibles');
+const getEmpresa = async (req, res) => {
   try {
-    const data = await afpModel.find({});
+    const data = await empresaModel.find({});
     console.log(data)
-    res.render('partials/afp/list', { data })
+    res.render('partials/empresa/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
@@ -106,4 +105,4 @@ const getAfp = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAfp, addAfp, editAfp };
+module.exports = { getEmpresa, addEmpresa, editEmpresa };

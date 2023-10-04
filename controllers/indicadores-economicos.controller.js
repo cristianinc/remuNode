@@ -1,34 +1,33 @@
 const { handleHttpError } = require("../utils/handleError");
-const { afpModel } = require("../models");
+const { indicadoresEconomicosModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
 
 
-const addAfp = async (req, res) => {
+const addIndEconomicos = async (req, res) => {
   try {
-    res.render('partials/afp/add')
+    res.render('partials/indicadoresEconomicos/add')
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const editAfp = async (req, res) => {
+const editIndEconomicos = async (req, res) => {
   try {
     //req = matchedData(req); //revisar funcionamiento
     const { id } = req.params;
-    const data = await afpModel.findById(id);
-    res.render('partials/afp/edit', { data })
+    const data = await indicadoresEconomicosModel.findById(id);
+    res.render('partials/indicadoresEconomicos/edit', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const getAfp = async (req, res) => {
-  console.log('muestyra todas las afp disponibles');
+const getIndEconomicos = async (req, res) => {
   try {
-    const data = await afpModel.find({});
+    const data = await indicadoresEconomicosModel.find({});
     console.log(data)
-    res.render('partials/afp/list', { data })
+    res.render('partials/indicadoresEconomicos/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
@@ -106,4 +105,4 @@ const getAfp = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAfp, addAfp, editAfp };
+module.exports = { getIndEconomicos, addIndEconomicos, editIndEconomicos };

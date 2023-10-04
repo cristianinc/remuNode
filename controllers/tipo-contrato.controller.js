@@ -1,34 +1,34 @@
 const { handleHttpError } = require("../utils/handleError");
-const { afpModel } = require("../models");
+const { tipoContratoModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
 
 
-const addAfp = async (req, res) => {
+const addTipoContrato = async (req, res) => {
   try {
-    res.render('partials/afp/add')
+    res.render('partials/tipocontrato/add')
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const editAfp = async (req, res) => {
+const editTipoContrato = async (req, res) => {
   try {
     //req = matchedData(req); //revisar funcionamiento
     const { id } = req.params;
-    const data = await afpModel.findById(id);
-    res.render('partials/afp/edit', { data })
+    const data = await tipoContratoModel.findById(id);
+    res.render('partials/tipocontrato/edit', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const getAfp = async (req, res) => {
-  console.log('muestyra todas las afp disponibles');
+const getTipoContrato = async (req, res) => {
+  console.log('muestyra todas las tipocontrato disponibles');
   try {
-    const data = await afpModel.find({});
+    const data = await tipoContratoModel.find({});
     console.log(data)
-    res.render('partials/afp/list', { data })
+    res.render('partials/tipocontrato/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
@@ -106,4 +106,4 @@ const getAfp = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAfp, addAfp, editAfp };
+module.exports = { getTipoContrato, addTipoContrato, editTipoContrato };

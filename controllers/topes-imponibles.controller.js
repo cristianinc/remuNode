@@ -1,34 +1,34 @@
 const { handleHttpError } = require("../utils/handleError");
-const { afpModel } = require("../models");
+const { topesImponiblesModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
 
 
-const addAfp = async (req, res) => {
+const addTopesImponibles = async (req, res) => {
   try {
-    res.render('partials/afp/add')
+    res.render('partials/topesimponibles/add')
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const editAfp = async (req, res) => {
+const editTopesImponibles = async (req, res) => {
   try {
     //req = matchedData(req); //revisar funcionamiento
     const { id } = req.params;
-    const data = await afpModel.findById(id);
-    res.render('partials/afp/edit', { data })
+    const data = await topesImponiblesModel.findById(id);
+    res.render('partials/topesimponibles/edit', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const getAfp = async (req, res) => {
-  console.log('muestyra todas las afp disponibles');
+const getTopesImponibles = async (req, res) => {
+  console.log('muestyra todas las topesimponibles disponibles');
   try {
-    const data = await afpModel.find({});
+    const data = await topesImponiblesModel.find({});
     console.log(data)
-    res.render('partials/afp/list', { data })
+    res.render('partials/topesimponibles/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
@@ -106,4 +106,4 @@ const getAfp = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAfp, addAfp, editAfp };
+module.exports = { getTopesImponibles, addTopesImponibles, editTopesImponibles };

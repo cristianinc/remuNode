@@ -4,6 +4,36 @@ const { trabajadorModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
 
+const addTrabajador = async (req, res) => {
+  try {
+    res.render('partials/trabajador/add')
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
+
+const editTrabajador = async (req, res) => {
+  try {
+    //req = matchedData(req); //revisar funcionamiento
+    const { id } = req.params;
+    const data = await trabajadorModel.findById(id);
+    res.render('partials/trabajador/edit', { data })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
+
+const getTrabajador = async (req, res) => {
+  console.log('muestyra todas las trabajador disponibles');
+  try {
+    const data = await trabajadorModel.find({});
+    console.log(data)
+    res.render('partials/trabajador/list', { data })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
+
 const findOne = async (req, res) => {
   try {
 
@@ -75,4 +105,4 @@ const remove = async (req, res) => {
   }
 };
 
-module.exports = { findOne, findAll, create, update, remove };
+module.exports = { findOne, findAll, create, update, remove, addTrabajador, editTrabajador, getTrabajador };

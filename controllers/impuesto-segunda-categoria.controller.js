@@ -1,34 +1,31 @@
 const { handleHttpError } = require("../utils/handleError");
-const { afpModel } = require("../models");
+const { impuestoSegundaCategoriaModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
 
 
-const addAfp = async (req, res) => {
+const addImpSegCat = async (req, res) => {
   try {
-    res.render('partials/afp/add')
+    res.render('partials/impuestoSegundaCategoria/add')
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const editAfp = async (req, res) => {
+const editImpSegCat = async (req, res) => {
   try {
-    //req = matchedData(req); //revisar funcionamiento
     const { id } = req.params;
-    const data = await afpModel.findById(id);
-    res.render('partials/afp/edit', { data })
+    const data = await impuestoSegundaCategoriaModel.findById(id);
+    res.render('partials/impuestoSegundaCategoria/edit', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
 };
 
-const getAfp = async (req, res) => {
-  console.log('muestyra todas las afp disponibles');
+const getImpSegCat = async (req, res) => {
   try {
-    const data = await afpModel.find({});
-    console.log(data)
-    res.render('partials/afp/list', { data })
+    const data = await impuestoSegundaCategoriaModel.find({});
+    res.render('partials/impuestoSegundaCategoria/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
@@ -106,4 +103,4 @@ const getAfp = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAfp, addAfp, editAfp };
+module.exports = { getImpSegCat, addImpSegCat, editImpSegCat };
