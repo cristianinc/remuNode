@@ -1,47 +1,51 @@
-const fs = require("fs");
-const xlsx = require("xlsx");
-
 const { handleHttpError } = require("../utils/handleError");
-
-
-const URL_PUBLIC = process.env.URL_PUBLIC || `${__dirname}/../storage`;
-const MEDIA_PATH = `${__dirname}/../storage`;
-
-const loadAttendance = async (req, res) => {
-    try {
-        const { filename } = req.file;
-        const body = {
-          url: `${URL_PUBLIC}/${filename}`,
-          filename: filename,
-        };
-
-        readFile( body.url )
-
-        res.send({ load:'Carga con éxito' })
-      } catch (e) {
-        handleHttpError(res, e);
-      }
-};
-
-const readFile = async (req, res, ruta = '') => {
-  ruta = `${URL_PUBLIC}/file-1695949016353.xlsx`
-  const workbook = xlsx.readFile(ruta);
-  const worksheet = workbook.SheetNames;
-  const sheet = worksheet[0];
-  const dataExcel = xlsx.utils.sheet_to_json(workbook.Sheets[sheet], {raw: false});
+const { afpModel } = require("../models");
+const optionsPaginate = require("../config/paginationParams");
 
 
 
-  for( const itemFila of dataExcel ){
-    console.log('======>', itemFila);
+const addAfp = async (req, res) => {
+  try {
+    res.render('partials/afp/add')
+  } catch (e) {
+    handleHttpError(res, e);
   }
-
-  console.log('lkaksdjfhjahkflhaklsdhfklashdklfhaskld');
-
-  return res.json({ ok: JSON.stringify(dataExcel) });
 };
+
+const editAfp = async (req, res) => {
+  try {
+    //req = matchedData(req); //revisar funcionamiento
+    const { id } = req.params;
+    const data = await afpModel.findById(id);
+    res.render('partials/afp/edit', { data })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
+
+const getAfp = async (req, res) => {
+  console.log('muestyra todas las afp disponibles');
+  try {
+    const data = await afpModel.find({});
+    console.log(data)
+    res.render('partials/afp/afp', { data })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
+
 
 // const findOne = async (req, res) => {
+//   try {
+
+//     //req = matchedData(req); //revisar funcionamiento
+//     const { id } = req.params;
+//     console.log('by Id', id );
+//     const data = await trabajadorModel.findById(id);
+//     res.send({ data });
+//   } catch (e) {
+//     handleHttpError(res, e);
+//   }
 // };
 
 // const findAll = async (req, res) => {
@@ -102,4 +106,4 @@ const readFile = async (req, res, ruta = '') => {
 //   }
 // };
 
-module.exports = { loadAttendance, readFile };
+module.exports = { getAfp, addAfp, editAfp };

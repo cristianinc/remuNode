@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+    <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+    <title>Remuneraciones</title>
+    <link href="css/app.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- inicio menu lateral-->
+        {{> menuLateral }}
+      <!-- fin menu lateral-->
+
+      <div class="main">
+        <!-- inicio menu superior-->
+        {{> menuSuperior }}
+		    <!-- fin menu superior-->
+		
+		<!-- inicio contenido principal-->		
+        <main class="content">
+          <div class="container-fluid p-0">
+			    
+          <!-- inicio indicadores economicos-->
+					<div class="row">
+						<div class="col-xl-12 col-xxl-12 d-flex">
+							<div class="w-100">
+								<div class="row">
+									<div class="col-sm-3">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">UF</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<i class="align-middle" data-feather="truck"></i>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">2.382</h1>
+											</div>
+										</div>
+									</div>
+                  <div class="col-sm-3">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">UTM</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<i class="align-middle" data-feather="users"></i>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">14.212</h1>
+											</div>
+										</div>                    
+                  </div>
+
+									<div class="col-sm-3">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">UTA</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<i class="align-middle" data-feather="dollar-sign"></i>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">$21.300</h1>
+											</div>
+										</div>
+									</div>
+
+                  <div class="col-sm-3">
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title">Sueldo Minimo</h5>
+													</div>
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<i class="align-middle" data-feather="shopping-cart"></i>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">64</h1>
+											</div>
+										</div>                    
+                  </div>
+								</div>
+							</div>
+						</div>
+					</div>          
+          
+          <h1 class="h3 mb-3">Empresa</h1>
+          <!-- inicio empresa-->		 
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nombre de la empresa</label>
+                        <input class="form-control form-control-lg" type="email" name="email" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Rut</label>
+                        <input class="form-control form-control-lg" type="text" name="rut" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Representante legal</label>
+                        <input class="form-control form-control-lg" type="text" name="representante" placeholder="" />
+                      </div>	
+                      <div class="mb-3">
+                        <label class="form-label">Telefono</label>
+                        <input class="form-control form-control-lg" type="text" name="telefono" placeholder="" />
+                      </div>	
+                      <div class="mb-3">
+                        <label class="form-label">Direccion</label>
+                        <input class="form-control form-control-lg" type="text" name="direccion" placeholder="" />
+                      </div>
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inicio afp-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input class="form-control form-control-lg" type="email" name="email" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Tasa dependientes</label>
+                        <input class="form-control form-control-lg" type="text" name="rut" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">SIS</label>
+                        <input class="form-control form-control-lg" type="text" name="representante" placeholder="" />
+                      </div>	
+                      <div class="mb-3">
+                        <label class="form-label">Tasa independientes</label>
+                        <input class="form-control form-control-lg" type="text" name="telefono" placeholder="" />
+                      </div>	
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- inicio asignacion familiar-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Tramo</label>
+                        <input class="form-control form-control-lg" type="email" name="email" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Monto</label>
+                        <input class="form-control form-control-lg" type="text" name="rut" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Renta</label>
+                        <input class="form-control form-control-lg" type="text" name="representante" placeholder="" />
+                      </div>	
+                      <div class="mb-3">
+                        <label class="form-label">Tasa independientes</label>
+                        <input class="form-control form-control-lg" type="text" name="telefono" placeholder="" />
+                      </div>	
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- inicio impuesto segunda categoria-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Indicador</label>
+                        <input class="form-control form-control-lg" type="text" name="indicador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Valor desde</label>
+                        <input class="form-control form-control-lg" type="text" name="valorDesde" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Valor hasta</label>
+                        <input class="form-control form-control-lg" type="text" name="valorHasta" placeholder="" />
+                      </div>	
+                      <div class="mb-3">
+                        <label class="form-label">Factor</label>
+                        <input class="form-control form-control-lg" type="text" name="factor" placeholder="" />
+                      </div>	
+                      <div class="mb-3">
+                        <label class="form-label">Cantidad rebajar</label>
+                        <input class="form-control form-control-lg" type="text" name="cantidadRebajar" placeholder="" />
+                      </div>	
+                      <div class="mb-3">
+                        <label class="form-label">Impuesto Efectivo</label>
+                        <input class="form-control form-control-lg" type="text" name="impuestoEfectivo" placeholder="" />
+                      </div>
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inicio salud-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input class="form-control form-control-lg" type="text" name="nombre" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Tasa</label>
+                        <input class="form-control form-control-lg" type="text" name="tasa" placeholder="" />
+                      </div>
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- inicio seguro cesantia-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Tipo contrato</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Empleador</label>
+                        <input class="form-control form-control-lg" type="text" name="empleador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Trabajador</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>                      
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inicio trabajador-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Rut</label>
+                        <input class="form-control form-control-lg" type="text" name="empleador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Fecha Nacimiento</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Telefono</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Fecha ingreso</label>
+                        <input class="form-control form-control-lg" type="date" name="trabajador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Cargo</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>                                <div class="mb-3">
+                        <label class="form-label">Tipo contrato</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Sueldo base</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">AFP</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Salud</label>
+                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                      </div>                                                                
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inicio tipo contrato-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Tipo contrato</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>                      
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>          
+
+          <!-- inicio topes imponibles-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Valor</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>                                            
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          <!-- inicio Renta imponible-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Valor</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>                                            
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inicio indicadores economicos-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Valor</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>                                            
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inicio gratificacion-->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="m-sm-3">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">Monto</label>
+                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                      </div>                                           
+                      <div class="d-grid gap-2 mt-3">
+                        <a href="#" class="btn btn-lg btn-primary">Registrar</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- inicio tablas-->
+					<div class="row">
+						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Trabajadores</h5>
+								</div>
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>Rut</th>
+											<th class="d-none d-xl-table-cell">Nombre</th>
+											<th class="d-none d-xl-table-cell">Fecha Contrato</th>
+											<th>Sueldo Base</th>
+											<th class="d-none d-md-table-cell">Estado</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Project Apollo</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
+										</tr>
+										<tr>
+											<td>Project Fireball</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-danger">Cancelled</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+										<tr>
+											<td>Project Hades</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Sharon Lessman</td>
+										</tr>
+										<tr>
+											<td>Project Nitro</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-warning">In progress</span></td>
+											<td class="d-none d-md-table-cell">Vanessa Tucker</td>
+										</tr>
+										<tr>
+											<td>Project Phoenix</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+										<tr>
+											<td>Project X</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Sharon Lessman</td>
+										</tr>
+										<tr>
+											<td>Project Romeo</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-success">Done</span></td>
+											<td class="d-none d-md-table-cell">Christina Mason</td>
+										</tr>
+										<tr>
+											<td>Project Wombat</td>
+											<td class="d-none d-xl-table-cell">01/01/2023</td>
+											<td class="d-none d-xl-table-cell">31/06/2023</td>
+											<td><span class="badge bg-warning">In progress</span></td>
+											<td class="d-none d-md-table-cell">William Harris</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+
+
+        </div>
+        </main>
+		<!-- fin contenido principal-->	
+        
+		<!-- <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-6 text-start">
+                <p class="mb-0">
+                  <a
+                    class="text-muted"
+                    href="https://adminkit.io/"
+                    target="_blank"
+                    ><strong>AdminKit</strong></a
+                  >
+                  -
+                  <a
+                    class="text-muted"
+                    href="https://adminkit.io/"
+                    target="_blank"
+                    ><strong>Bootstrap Admin Template</strong></a
+                  >
+                  &copy;
+                </p>
+              </div>
+              <div class="col-6 text-end">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://adminkit.io/"
+                      target="_blank"
+                      >Support</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://adminkit.io/"
+                      target="_blank"
+                      >Help Center</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://adminkit.io/"
+                      target="_blank"
+                      >Privacy</a
+                    >
+                  </li>
+                  <li class="list-inline-item">
+                    <a
+                      class="text-muted"
+                      href="https://adminkit.io/"
+                      target="_blank"
+                      >Terms</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer> -->
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+
+  </body>
+</html>
