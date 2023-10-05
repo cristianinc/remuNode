@@ -25,6 +25,7 @@ const editImpSegCat = async (req, res) => {
 const getImpSegCat = async (req, res) => {
   try {
     const data = await impuestoSegundaCategoriaModel.find({});
+    console.log(data);
     res.render('partials/impuestoSegundaCategoria/list', { data })
   } catch (e) {
     handleHttpError(res, e);

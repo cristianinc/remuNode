@@ -36,73 +36,36 @@
                         <div class="card-header">
                             <h5 class="card-title mb-0">Trabajador</h5>
                         </div>
-                        <table class="table table-hover my-0">
-                            <thead>
+                        <table class="table table-bordered" >
+                            <thead class="text-center">
                                 <tr>
                                     <th>Rut</th>
-                                    <th class="d-none d-xl-table-cell">Nombre</th>
-                                    <th class="d-none d-xl-table-cell">Fecha Contrato</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha Nacimiento</th>
+                                    <th>Telefono</th>
+                                    <th>Fecha Ingreso</th>
+                                    <th>Cargo</th>
+                                    <th>Tipo Contrato</th>
                                     <th>Sueldo Base</th>
-                                    <th class="d-none d-md-table-cell">Estado</th>
+                                    <th>Afp</th>
+                                    <th>Salud</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each data}}
                                 <tr>
-                                    <td>Project Apollo</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                                    <td>{{ rut }}</td>
+                                    <td>{{ nombre }}</td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ fechaNacimiento }} </td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ telefono }} </td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ fechaIngreso }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ cargo }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ tipoContrato }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ sueldoBase }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ afp }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ salud }} </span></td>
                                 </tr>
-                                <tr>
-                                    <td>Project Fireball</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-danger">Cancelled</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Hades</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Nitro</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-warning">In progress</span></td>
-                                    <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Phoenix</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
-                                <tr>
-                                    <td>Project X</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Romeo</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Christina Mason</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Wombat</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-warning">In progress</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>

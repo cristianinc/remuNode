@@ -36,80 +36,29 @@
                         <div class="card-header">
                             <h5 class="card-title mb-0">Asignación Familiar</h5>
                         </div>
-                        <table class="table table-hover my-0">
-                            <thead>
+                        <table class="table table-bordered">
+                            <thead class="text-center">
                                 <tr>
-                                    <th>Rut</th>
-                                    <th class="d-none d-xl-table-cell">Nombre</th>
-                                    <th class="d-none d-xl-table-cell">Fecha Contrato</th>
-                                    <th>Sueldo Base</th>
-                                    <th class="d-none d-md-table-cell">Estado</th>
+                                    <th>Tramo</th>
+                                    <th>Monto</th>
+                                    <th>Requisito</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each data}}
                                 <tr>
-                                    <td>Project Apollo</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ tramo }}</td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ monto }}</td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ renta }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Project Fireball</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-danger">Cancelled</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Hades</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Nitro</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-warning">In progress</span></td>
-                                    <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Phoenix</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
-                                <tr>
-                                    <td>Project X</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Romeo</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Christina Mason</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Wombat</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-warning">In progress</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="mb-3">
+                {{!-- <div class="mb-3">
                     <a href="asignacion-familiar/add" class="btn btn-primary">Nuevo</a>
-                </div>
+                </div> --}}
             </div>
             <!-- inicio tablas-->
         </div>

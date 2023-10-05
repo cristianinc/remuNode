@@ -36,79 +36,29 @@
                         <div class="card-header">
                             <h5 class="card-title mb-0">Impuesto Segunda Categoria</h5>
                         </div>
-                        <table class="table table-hover my-0">
-                            <thead>
+                        <table class="table table-bordered" >
+                            <thead class="text-center">
                                 <tr>
-                                    <th>Rut</th>
-                                    <th class="d-none d-xl-table-cell">Nombre</th>
-                                    <th class="d-none d-xl-table-cell">Fecha Contrato</th>
-                                    <th>Sueldo Base</th>
-                                    <th class="d-none d-md-table-cell">Estado</th>
+                                    <th>Desde</th>
+                                    <th>Hasta</th>
+                                    <th>Factor</th>
+                                    <th>Cantidad Rebajar</th>
+                                    <th>Tasa imp Efectiva</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {{#each data}}
                                 <tr>
-                                    <td>Project Apollo</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Vanessa Tucker</td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ valorDesde }} </td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ valorHasta }} </td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ factor }}</td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ cantidadRebajar }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ impuestoEfectivo }} </span></td>
                                 </tr>
-                                <tr>
-                                    <td>Project Fireball</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-danger">Cancelled</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Hades</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Nitro</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-warning">In progress</span></td>
-                                    <td class="d-none d-md-table-cell">Vanessa Tucker</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Phoenix</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
-                                <tr>
-                                    <td>Project X</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Sharon Lessman</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Romeo</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-success">Done</span></td>
-                                    <td class="d-none d-md-table-cell">Christina Mason</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Wombat</td>
-                                    <td class="d-none d-xl-table-cell">01/01/2023</td>
-                                    <td class="d-none d-xl-table-cell">31/06/2023</td>
-                                    <td><span class="badge bg-warning">In progress</span></td>
-                                    <td class="d-none d-md-table-cell">William Harris</td>
-                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <a href="afp/add" class="btn btn-primary">Nuevo</a>
                 </div>
             </div>
             <!-- inicio tablas-->
@@ -122,3 +72,18 @@
 
   </body>
 </html>
+
+
+  {{!-- {
+    _id: new ObjectId("64ffc37c40176eba12eadd0d"),
+    indicador: 'mensual',
+    factor: 0.08,
+    cantidadRebajar: 110077.62,
+    impuestoEfectivo: 4.52,
+    deleted: false,
+    createdAt: 2023-09-12T01:42:19.719Z,
+    updatedAt: 2023-09-12T01:42:19.719Z,
+    __v: 0,
+    valorDesde: 1897890.01,
+    valorHasta: 3163150
+  }, --}}

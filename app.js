@@ -11,7 +11,6 @@ const app = express();
 app.set('view engine', 'hbs');
 hbs.registerPartials( __dirname + '/views/partials');
 
-
 app.use( cors() );
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -3,7 +3,6 @@ const { handleHttpError } = require("../utils/handleError");
 const { trabajadorModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 
-
 const addTrabajador = async (req, res) => {
   try {
     res.render('partials/trabajador/add')
