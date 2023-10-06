@@ -7,12 +7,11 @@ const  { getImpSegCat, addImpSegCat, editImpSegCat  } = require('../controllers/
 const  { getIndEconomicos, addIndEconomicos, editIndEconomicos  } = require('../controllers/indicadores-economicos.controller')
 const  { getRentaImponible, addRentaImponible, editRentaImponible  } = require('../controllers/renta-imponible.controller')
 const  { getSalud, addSalud, editSalud  } = require('../controllers/salud.controller')
-
 const  { getSeguroCesantia, addSeguroCesantia, editSeguroCesantia  } = require('../controllers/seguro-cesantia.controller')
 const  { getTipoContrato, addTipoContrato, editTipoContrato  } = require('../controllers/tipo-contrato.controller')
 const  { getTopesImponibles, addTopesImponibles, editTopesImponibles  } = require('../controllers/topes-imponibles.controller')
 const  { getTrabajador, addTrabajador, editTrabajador  } = require('../controllers/trabajador.controller')
-
+const  { addLiquidacion } = require('../controllers/liquidacion.controller')
 
 
 router.get("/afp", getAfp);
@@ -58,4 +57,6 @@ router.get("/topes-imponibles/edit/:id", editTopesImponibles);
 router.get("/trabajador", getTrabajador);
 router.get("/trabajador/add", addTrabajador);
 router.get("/trabajador/edit/:id", editTrabajador);
+
+router.get("/liquidacion", addLiquidacion);
 module.exports = router;

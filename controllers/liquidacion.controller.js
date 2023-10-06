@@ -80,6 +80,14 @@ const remove = async (req, res) => {
   }
 };
 
+const addLiquidacion = async (req, res) => {
+  try {
+    res.render('partials/liquidacion/add')
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
+
 const generaLiquidacion = async (mes, anio, rut) => {
 
   const { nombre: nombreEmpresa, rut: rutEmpresa, direccion: direccionEmpresa } = await empresaModel.findOne();
@@ -183,4 +191,4 @@ try {
   }
 };
 
-module.exports = { findOne, findAll, create, update, remove };
+module.exports = { findOne, findAll, create, update, remove, addLiquidacion };

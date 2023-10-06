@@ -4,12 +4,16 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const hbs = require('hbs');
 
-const dbConnect = require('./config/mongo')
+const dbConnect = require('./config/mongo');
+const { formatDate } = require('./views/helpers/formatDate');
+
 
 const app = express();
 
 app.set('view engine', 'hbs');
 hbs.registerPartials( __dirname + '/views/partials');
+
+hbs.registerHelper('formatDate', formatDate)
 
 app.use( cors() );
 app.use(bodyParser.urlencoded({ extended: false }));
