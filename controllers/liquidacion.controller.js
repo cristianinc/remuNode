@@ -82,7 +82,9 @@ const remove = async (req, res) => {
 
 const addLiquidacion = async (req, res) => {
   try {
-    res.render('partials/liquidacion/add')
+    const data = await trabajadorModel.find({});
+    console.log(data);
+    res.render('partials/liquidacion/add', { data })
   } catch (e) {
     handleHttpError(res, e);
   }

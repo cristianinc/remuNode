@@ -54,16 +54,16 @@
                             <tbody>
                                 {{#each data}}
                                 <tr>
-                                    <td>{{ rut }}</td>
+                                    <td class="d-none d-xl-table-cell text-end">{{ rut }}</td>
                                     <td>{{ nombre }}</td>
                                     <td class="d-none d-xl-table-cell text-end">{{ fechaNacimiento }} </td>
                                     <td class="d-none d-xl-table-cell text-end">{{ telefono }} </td>
                                     <td class="d-none d-xl-table-cell text-end">{{ formatDate fechaIngreso }} </span></td>
-                                    <td class="d-none d-xl-table-cell text-end">{{ cargo }} </span></td>
-                                    <td class="d-none d-xl-table-cell text-end">{{ tipoContrato }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-start">{{ cargo }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-start">{{ tipoContrato }} </span></td>
                                     <td class="d-none d-xl-table-cell text-end">{{ sueldoBase }} </span></td>
-                                    <td class="d-none d-xl-table-cell text-end">{{ afp }} </span></td>
-                                    <td class="d-none d-xl-table-cell text-end">{{ salud }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-start">{{ afp }} </span></td>
+                                    <td class="d-none d-xl-table-cell text-start">{{ salud }} </span></td>
                                 </tr>
                                 {{/each}}
                             </tbody>
