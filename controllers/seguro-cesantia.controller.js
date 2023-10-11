@@ -28,7 +28,7 @@ const getSeguroCesantia = async (req, res) => {
   try {
     const data = await seguroCesantiaModel.find({});
     console.log(data)
-    res.render('partials/segurocesantia/list', { data })
+    res.render('partials/seguroCesantia/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }

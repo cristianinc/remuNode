@@ -28,7 +28,7 @@ const getTipoContrato = async (req, res) => {
   try {
     const data = await tipoContratoModel.find({});
     console.log(data)
-    res.render('partials/tipocontrato/list', { data })
+    res.render('partials/tipoContrato/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }

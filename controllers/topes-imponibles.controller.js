@@ -28,7 +28,7 @@ const getTopesImponibles = async (req, res) => {
   try {
     const data = await topesImponiblesModel.find({});
     console.log(data)
-    res.render('partials/topesimponibles/list', { data })
+    res.render('partials/topesImponibles/list', { data })
   } catch (e) {
     handleHttpError(res, e);
   }
