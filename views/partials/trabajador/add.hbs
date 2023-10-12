@@ -37,48 +37,62 @@
               <div class="card">
                 <div class="card-body">
                   <div class="m-sm-3">
-                    <form>
+                    <form id="formularioTrabajador">
                       <div class="mb-3">
                         <label class="form-label">Nombre</label>
-                        <input class="form-control form-control-lg" type="text" name="tipoContrato" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="nombre" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Rut</label>
-                        <input class="form-control form-control-lg" type="text" name="empleador" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="rut" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Fecha Nacimiento</label>
-                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                        <input class="form-control form-control-lg" type="date" name="fechaNacimiento" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Telefono</label>
-                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="telefono" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Fecha ingreso</label>
-                        <input class="form-control form-control-lg" type="date" name="trabajador" placeholder="" />
+                        <input class="form-control form-control-lg" type="date" name="fechaIngreso" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Cargo</label>
-                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
-                      </div>                                <div class="mb-3">
+                        <input class="form-control form-control-lg" type="text" name="cargo" placeholder="" />
+                      </div>                                
+                      <div class="mb-3">
                         <label class="form-label">Tipo contrato</label>
-                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                        <select class="form-control form-control-lg" name="tipoContrato">
+                          {{#each tipoContrato}}
+                            <option value='{{ nombre }}'>{{ nombre }}</option>
+                          {{/each}}
+                        </select>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Sueldo base</label>
-                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="sueldoBase" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">AFP</label>
-                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                        <select class="form-control form-control-lg" name="afp">
+                          {{#each afp}}
+                            <option value='{{ nombre }}'>{{ nombre }}</option>
+                          {{/each}}
+                        </select>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Salud</label>
-                        <input class="form-control form-control-lg" type="text" name="trabajador" placeholder="" />
+                        <select class="form-control form-control-lg" name="salud">
+                          {{#each salud}}
+                            <option value='{{ nombre }}'>{{ nombre }}</option>
+                          {{/each}}
+                        </select>                        
                       </div>                                                                
                       <div class="mb-3">
-                        <a href="#" class="btn btn-primary">Registrar</a>
+                        {{!-- <a href="javascript:void(0)" class="btn btn-primary" onclick="guardarTrabajador();">Registrar</a> --}}
+                         <button type="submit" value="Enviar" id="btnSend" class="btn btn-primary">Enviar</button>
                       </div>
                       <div class="mb-3">
                           <a href="/remuneraciones/trabajador" class="btn btn-secondary">Volver</a>
@@ -102,6 +116,7 @@
     </div>
 
     <script src="/js/app.js"></script>
+    <script src="/js/trabajador.js"></script>
 
   </body>
 </html>
