@@ -2,6 +2,7 @@ const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError");
 const { liquidacionModel, empresaModel, trabajadorModel, gratificacionModel, afpModel, saludModel, seguroCesantiaModel, impuestoSegundaCategoriaModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
+const { generatePdf } = require("../pdf/generatePdf");
 
 
 const findOne = async (req, res) => {
@@ -37,9 +38,21 @@ const findAll = async (req, res) => {
 const create = async (req, res) => {
   try {
     const { mes, anio, rut } = req.body;
-    const liquidacion = await generaLiquidacion(  mes, anio, rut  );
+    const url = "http://localhost:3000/liquidacion"
+    const  pdfBuffer = await generatePdf( url );
 
-    return res.json({ liquidacion });
+    res.status(200)
+      .set({ 
+        "Access-Control-Allow-Origin" : "*",
+        "Access-Control-Allow-Credentials" : true,
+        "Content-Type" : "application/pdf",
+      })
+      .end(pdfBuffer)
+
+
+    // const liquidacion = await generaLiquidacion(  mes, anio, rut  );
+
+    // return res.json({ liquidacion });
 
   } catch (e) {
     handleHttpError(res, e);
