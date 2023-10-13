@@ -40,31 +40,31 @@
                     <form id="formularioTrabajador">
                       <div class="mb-3">
                         <label class="form-label">Nombre</label>
-                        <input class="form-control form-control-lg" type="text" name="nombre" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="nombre" id="nombre" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Rut</label>
-                        <input class="form-control form-control-lg" type="text" name="rut" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="rut" id="rut" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Fecha Nacimiento</label>
-                        <input class="form-control form-control-lg" type="date" name="fechaNacimiento" placeholder="" />
+                        <input class="form-control form-control-lg" type="date" name="fechaNacimiento" id="fechaNacimiento" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Telefono</label>
-                        <input class="form-control form-control-lg" type="text" name="telefono" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="telefono" id="telefono" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Fecha ingreso</label>
-                        <input class="form-control form-control-lg" type="date" name="fechaIngreso" placeholder="" />
+                        <input class="form-control form-control-lg" type="date" name="fechaIngreso" id="fechaIngreso" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Cargo</label>
-                        <input class="form-control form-control-lg" type="text" name="cargo" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="cargo" id="cargo" placeholder="" />
                       </div>                                
                       <div class="mb-3">
                         <label class="form-label">Tipo contrato</label>
-                        <select class="form-control form-control-lg" name="tipoContrato">
+                        <select class="form-control form-control-lg" name="tipoContrato" id="tipoContrato">
                           {{#each tipoContrato}}
                             <option value='{{ nombre }}'>{{ nombre }}</option>
                           {{/each}}
@@ -72,11 +72,11 @@
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Sueldo base</label>
-                        <input class="form-control form-control-lg" type="text" name="sueldoBase" placeholder="" />
+                        <input class="form-control form-control-lg" type="text" name="sueldoBase" id="sueldoBase" placeholder="" />
                       </div>
                       <div class="mb-3">
                         <label class="form-label">AFP</label>
-                        <select class="form-control form-control-lg" name="afp">
+                        <select class="form-control form-control-lg" name="afp" id="afp">
                           {{#each afp}}
                             <option value='{{ nombre }}'>{{ nombre }}</option>
                           {{/each}}
@@ -84,15 +84,15 @@
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Salud</label>
-                        <select class="form-control form-control-lg" name="salud">
+                        <select class="form-control form-control-lg" name="salud" id="salud">
                           {{#each salud}}
                             <option value='{{ nombre }}'>{{ nombre }}</option>
                           {{/each}}
                         </select>                        
                       </div>                                                                
                       <div class="mb-3">
-                        {{!-- <a href="javascript:void(0)" class="btn btn-primary" onclick="guardarTrabajador();">Registrar</a> --}}
-                         <button type="submit" value="Enviar" id="btnSend" class="btn btn-primary">Enviar</button>
+                        <a href="javascript:void(0)" class="btn btn-primary" onclick="guardarTrabajador();">Registrar</a>
+                         {{!-- <button type="submit" value="Enviar" id="btnSend" class="btn btn-primary">Enviar</button> --}}
                       </div>
                       <div class="mb-3">
                           <a href="/remuneraciones/trabajador" class="btn btn-secondary">Volver</a>

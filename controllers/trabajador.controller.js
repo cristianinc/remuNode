@@ -16,10 +16,12 @@ const addTrabajador = async (req, res) => {
 
 const editTrabajador = async (req, res) => {
   try {
-    //req = matchedData(req); //revisar funcionamiento
     const { id } = req.params;
-    const data = await trabajadorModel.findById(id);
-    res.render('partials/trabajador/edit', { data })
+    const trabajador = await trabajadorModel.findById(id);
+    const afp = await afpModel.find({});
+    const salud = await saludModel.find({});
+    const tipoContrato = await tipoContratoModel.find({});    
+    res.render('partials/trabajador/edit', { trabajador, afp, salud, tipoContrato })
   } catch (e) {
     handleHttpError(res, e);
   }
@@ -68,15 +70,14 @@ const create = async (req, res) => {
   }
 };
 
+
+//Faltan las validaciones correspondientes
 const update = async (req, res) => {
     try {
-      const { file } = req;
-      const body = {
-        url: `${URL_PUBLIC}/${file.filename}`,
-        filename: file.filename,
-      };
-      const response = await trabajadorModel.create(body);
-      res.send({ response });
+      const _id = req.params.id;
+      const data = req.body;
+      const response = await trabajadorModel.findByIdAndUpdate(_id, data, { new: true });
+      res.status(200).json({ response })
     } catch (e) {
       handleHttpError(res, e);
     }
@@ -84,19 +85,9 @@ const update = async (req, res) => {
 
 const remove = async (req, res) => {
   try {
-    req = matchedData(req);
-    const id = req.id;
-    const findMedia = await trabajadorModel.findById(id);
-    const fileName = findMedia.filename;
-    await trabajadorModel.delete({ _id: id });
-    fs.unlinkSync(`${MEDIA_PATH}/${fileName}`);
-
-    const data = {
-      findMedia: fileName,
-      deleted: true,
-    };
-
-    res.send({ data });
+    const _id = req.params.id;
+    const response = await trabajadorModel.findByIdAndUpdate(_id, { deleted: false }, { new: true });
+    res.status(200).json({ response })
   } catch (e) {
     handleHttpError(res, e);
   }

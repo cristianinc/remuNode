@@ -6,4 +6,4 @@ const formatDate = ( myDate ) => {
 
 module.exports = {
     formatDate
-};;
+};
