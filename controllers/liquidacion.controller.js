@@ -22,13 +22,13 @@ const findAll = async (req, res) => {
   let mes  = 6;
   let anio = 2023;
   let liquidacion = [];
-    // for( const prop in data ){
-    //   let rut = data[prop].rut;
-    //   let dataLiquidacion = await generaLiquidacion( mes, anio, rut );
-    //   liquidacion.push( dataLiquidacion );
-    // }
-    // dataLiq = { liquidacion : liquidacion }
-    // console.log(JSON.stringify(dataLiq));
+    for( const prop in data ){
+      let rut = data[prop].rut;
+      let dataLiquidacion = await generaLiquidacion( mes, anio, rut );
+      liquidacion.push( dataLiquidacion );
+    }
+    dataLiq = { liquidacion : liquidacion }
+    console.log(JSON.stringify(dataLiq));
 
     res.render('liquidacion', { liquidacion })
 

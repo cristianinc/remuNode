@@ -37,7 +37,7 @@
 								<div class="card-body">
 									<form id="formElement">
 										<div class="row">
-											<div class="mb-3 col-md-6">
+											<div class="mb-3 col-md-4">
 												<label class="form-label">Mes</label>
                         <select class="form-control " id="mes" name="mes" >
                           <option value="">Seleccione Mes</option>
@@ -55,7 +55,7 @@
                           <option value="12">Diciembre</option>
                         </select>
 											</div>
-											<div class="mb-3 col-md-6">
+											<div class="mb-3 col-md-4">
 												<label class="form-label">Año</label>
 												    <select class="form-control" id="anio" name="anio">
                                 <option value="">Seleccione A&ntilde;o</option>
@@ -66,13 +66,17 @@
                                 <option value="2020">2022</option>
                                 <option value="2020">2023</option> 
                             </select>  
-											</div>                  
+											</div> 
+											<div class="mb-3 col-md-4">
+												<label class="form-label">Mes</label>
+                        <a href="javascript:void(0)" onclick="generarLiquidacion();"class="form-control btn btn-primary">Generar Liquidacion</a>
+											</div>                                       
 										</div>
                     <div class="mb-3">
                       <table class="table table-bordered" >
                           <thead class="text-center">
                               <tr>
-                                  <th><input type="checkbox" class="form-check-input" name="chkTodos" onclick="checkAll()"></th>
+                                  <th><input type="checkbox" class="form-check-input" name="chkTodos" onclick="checkAll(this)"></th>
                                   <th>Rut</th>
                                   <th>Nombre</th>
                                   <th>Fecha Ingreso</th>
@@ -82,7 +86,7 @@
                           <tbody>
                             {{#each data}}
                               <tr>
-                                 <td class="text-center"><input type="checkbox" class="form-check-input" name="chk{{_id}}" ></td>
+                                 <td class="text-center"><input type="checkbox" class="form-check-input" name="chk{{_id}}" value={{ _id }}></td>
                                  <td class="d-none d-xl-table-cell text-end">{{ rut }}</td>
                                  <td class="d-none d-xl-table-cell text-start">{{ nombre }}</td>
                                  <td class="d-none d-xl-table-cell text-end">{{ formatDate fechaIngreso }}</td>
