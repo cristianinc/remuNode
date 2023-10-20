@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer')
 
 const generatePdf = async ( url ) => {
     const browser = await puppeteer.launch({
-        headless: 'new',
+        headless: 'false',
         defaultViewport: {
             width: 1080,
             height:1600,
