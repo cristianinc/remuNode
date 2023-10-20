@@ -2,17 +2,20 @@ const puppeteer = require('puppeteer')
 
 
 const generatePdf = async ( url ) => {
+    // const browser = await puppeteer.launch({
+    //     headless: 'false',
+    //     defaultViewport: {
+    //         width: 1080,
+    //         height:1600,
+    //         deviceScaleFactor: 1,
+    //         // isMobile: false,
+    //         // hasTouch: false,
+    //         Landscape: true,
+    //     },
+    // });
     const browser = await puppeteer.launch({
-        headless: 'false',
-        defaultViewport: {
-            width: 1080,
-            height:1600,
-            deviceScaleFactor: 1,
-            // isMobile: false,
-            // hasTouch: false,
-            Landscape: true,
-        },
-    });
+        args: ['--no-sandbox']
+      });
     const page = await browser.newPage();
     // await page.goto(url, {
     //     waitUntil: "networkidle0"
