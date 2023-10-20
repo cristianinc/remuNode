@@ -1,3 +1,6 @@
+const base_url = window.location.origin;
+const pathArray = window.location.pathname.split( '/' );
+
 function checkAll(value) {
     document.querySelectorAll('#formElement input[type=checkbox]').forEach(function(checkElement) {
         checkElement.checked = value.checked;
@@ -6,29 +9,24 @@ function checkAll(value) {
 }
 
 
-const generarLiquidacion = async ( rut ) => {
-    const mes = document.getElementById('mes').value;
-    const anio = document.getElementById('anio').value;
-
+const generarLiquidacion = async ( mes, anio, rut =[] ) => {
     const data = { 
         mes: mes,
         anio: anio,
         rut: rut
      };
+     console.log('ruts' , rut);
 
-    await fetch(base_url + "/trabajador/", {
+    await fetch(base_url + "/liquidacion/", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify( data ),
-    }).then(function(response) {
-        if(response.ok) {
-            return console.log( 'Trabajador agregado Correctamente', response )
-        } else {
-            throw "Error en la llamada Ajax";
-        }
-    
+    }).then (response => response.blob())
+    .then(  blob => {
+        var file = window.URL.createObjectURL(blob);
+        window.open(file);
     })
     .catch(function(err) {
         console.log(err);
@@ -38,17 +36,27 @@ const generarLiquidacion = async ( rut ) => {
     console.log('generando liquidacion de sueldo')
 };
 
-const generarTodasLiquidacion = ( ) =>{
+const generarTodasLiquidacion = async () => {
     const mes = document.getElementById('mes').value;
     const anio = document.getElementById('anio').value;
+    const rut = [];
+
+    document.querySelectorAll('#formElement input[type=checkbox]').forEach(function(checkElement) {
+        if(checkElement.checked){
+            rut.push(checkElement.value)
+        }
+    });
     
+    await generarLiquidacion( mes, anio, rut )
+
     console.log('generando liquidacion de sueldo')
 };
 
 
-const editarLiquidacion = ( rut ) =>{
+const editarLiquidacion = ( trabajador ) =>{
     const mes = document.getElementById('mes').value;
     const anio = document.getElementById('anio').value;
     
-    console.log('generando liquidacion de sueldo')
+    location.href = '/remuneraciones/liquidacion/edit/'+trabajador;
+    console.log('editando liquidacion de sueldo')
 };

@@ -3,21 +3,23 @@ const puppeteer = require('puppeteer')
 
 const generatePdf = async ( url ) => {
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: 'new',
         defaultViewport: {
-            width: 750,
-            height:500,
+            width: 1080,
+            height:1600,
             deviceScaleFactor: 1,
-            isMobile: false,
-            hasTouch: false,
-            isLandscape: false,
+            // isMobile: false,
+            // hasTouch: false,
+            Landscape: true,
         },
     });
     const page = await browser.newPage();
-    await page.goto(url, {
-        waitUntil: "networkidle0"
-    });
+    // await page.goto(url, {
+    //     waitUntil: "networkidle0"
+    // });
+
     await page.emulateMediaType("screen");
+    await page.setContent(url, {  waitUntil: "networkidle0" })
     const pdf = await page.pdf({
         format: "A4",
         printBackground: true,

@@ -11,7 +11,7 @@ const  { getSeguroCesantia, addSeguroCesantia, editSeguroCesantia  } = require('
 const  { getTipoContrato, addTipoContrato, editTipoContrato  } = require('../controllers/tipo-contrato.controller')
 const  { getTopesImponibles, addTopesImponibles, editTopesImponibles  } = require('../controllers/topes-imponibles.controller')
 const  { getTrabajador, addTrabajador, editTrabajador  } = require('../controllers/trabajador.controller')
-const  { addLiquidacion } = require('../controllers/liquidacion.controller')
+const  { addLiquidacion, editLiquidacion } = require('../controllers/liquidacion.controller')
 
 
 router.get("/afp", getAfp);
@@ -59,4 +59,5 @@ router.get("/trabajador/add", addTrabajador);
 router.get("/trabajador/edit/:id", editTrabajador);
 
 router.get("/liquidacion", addLiquidacion);
+router.get("/liquidacion/edit/:id", editLiquidacion);
 module.exports = router;

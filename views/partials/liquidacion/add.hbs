@@ -76,7 +76,7 @@
                       <table class="table table-bordered" >
                           <thead class="text-center">
                               <tr>
-                                  <th><input type="checkbox" class="form-check-input" name="chkTodos" onclick="checkAll(this)"></th>
+                                  <th><input type="checkbox" class="form-check-input" name="chkTodos" id="chkTodos" onclick="checkAll(this)"></th>
                                   <th>Rut</th>
                                   <th>Nombre</th>
                                   <th>Fecha Ingreso</th>
@@ -86,13 +86,13 @@
                           <tbody>
                             {{#each data}}
                               <tr>
-                                 <td class="text-center"><input type="checkbox" class="form-check-input" name="chk{{_id}}" value={{ _id }}></td>
+                                 <td class="text-center"><input type="checkbox" class="form-check-input" name="chk{{_id}}" value={{ rut }}></td>
                                  <td class="d-none d-xl-table-cell text-end">{{ rut }}</td>
                                  <td class="d-none d-xl-table-cell text-start">{{ nombre }}</td>
                                  <td class="d-none d-xl-table-cell text-end">{{ formatDate fechaIngreso }}</td>
                                  <td class="d-none d-xl-table-cell text-center">
-                                    <a href="javascript:void(0)" onclick="generarLiquidacion({{ rut }});"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
-                                    <a href="javascript:void(0)" onclick="editarLiquidacion({{ rut }});"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
+                                    <a href="javascript:void(0)" onclick="editarLiquidacion('{{ _id }}');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
+                                    <a href="javascript:void(0)" onclick="editarLiquidacion('{{ _id }}');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
                                  </td>
                               </tr>
                               {{/each}}

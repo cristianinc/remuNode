@@ -1,9 +1,22 @@
 const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError");
+const axios = require("axios");
 const { liquidacionModel, empresaModel, trabajadorModel, gratificacionModel, afpModel, saludModel, seguroCesantiaModel, impuestoSegundaCategoriaModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 const { generatePdf } = require("../pdf/generatePdf");
+const { Page } = require("puppeteer");
+const fs = require('fs');
+const { handlebars } = require("hbs");
 
+const editLiquidacion = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const liquidacion = await liquidacionModel.findById(id); 
+    res.render('partials/liquidacion/edit', { liquidacion })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
 
 const findOne = async (req, res) => {
   try {
@@ -28,18 +41,28 @@ const findAll = async (req, res) => {
       let dataLiquidacion = await generaLiquidacion( mes, anio, rut );
       liquidacion.push( dataLiquidacion );
     }
-    dataLiq = { liquidacion : liquidacion }
-    console.log(JSON.stringify(dataLiq));
-
     res.render('liquidacion', { liquidacion })
 
 };
 
 const create = async (req, res) => {
   try {
+
     const { mes, anio, rut } = req.body;
-    const url = "http://localhost:3000/liquidacion"
-    const  pdfBuffer = await generatePdf( url );
+    let liquidacion = [];
+    for ( const _rut of rut ){
+        let dataLiquidacion = await generaLiquidacion( mes, anio, _rut );
+        liquidacion.push( dataLiquidacion );
+    }
+    console.log(liquidacion)
+
+    const htmlFile = fs.readFileSync('./views/liquidacion.hbs', 'utf8').toString();
+    const template = handlebars.compile(htmlFile);
+    const html = template({ liquidacion })  
+
+  
+    // const url = "http://localhost:3000/liquidacion"; //findall
+    const  pdfBuffer = await generatePdf( html );
 
     res.status(200)
       .set({ 
@@ -48,11 +71,6 @@ const create = async (req, res) => {
         "Content-Type" : "application/pdf",
       })
       .end(pdfBuffer)
-
-
-    // const liquidacion = await generaLiquidacion(  mes, anio, rut  );
-
-    // return res.json({ liquidacion });
 
   } catch (e) {
     handleHttpError(res, e);
@@ -104,41 +122,46 @@ const addLiquidacion = async (req, res) => {
 };
 
 const generaLiquidacion = async (mes, anio, rut) => {
-
-  const { nombre: nombreEmpresa, rut: rutEmpresa, direccion: direccionEmpresa } = await empresaModel.findOne();
-  const empresa = { nombre: nombreEmpresa, rut: rutEmpresa, direcccion: direccionEmpresa };
-  const fecha_liquidacion = { mes, anio };
-  const { nombre: nombreTrabajador, rut: rutTrabajador, fecha_ingreso, sueldoBase, cargo, tipoContrato, afp, salud } = await trabajadorModel.findOne({ "rut": rut });
-  const trabajador = { nombreTrabajador, rutTrabajador, fecha_ingreso, cargo, tipoContrato};
-  const { monto: gratificacionLegal } = await gratificacionModel.findOne();
-  const descuentos_imponibles = { sueldo_base: sueldoBase, bono_responsabilidad: 70000, bono_asistencia: 35000, horas_extras: 46200};
-  const gratificacion = await calculoGratificacion( gratificacionLegal, descuentos_imponibles)
-  descuentos_imponibles.gratificacion = gratificacion;
-  const total_descuentos_imponibles = await calculoDescuentosLegales(descuentos_imponibles); //imponibles
-  const descAFP = await calculoAFP( afp, total_descuentos_imponibles );
-  const descSalud = await calculoSalud( salud, total_descuentos_imponibles );
-  const descSegCesantia = await calculoSeguroCesantia( tipoContrato, total_descuentos_imponibles );
-  const descuentos_legales = { afp: descAFP, salud: descSalud, seguroCesantia: descSegCesantia, caja_compensacion:0, sindicato:0, impuesto_renta:0 };
+  try {
+    console.log('generaLiquidacion mes, anio, rut', mes, anio, rut);
+    const { nombre: nombreEmpresa, rut: rutEmpresa, direccion: direccionEmpresa } = await empresaModel.findOne();
+    const empresa = { nombre: nombreEmpresa, rut: rutEmpresa, direcccion: direccionEmpresa };
+    const fecha_liquidacion = { mes, anio };
+    const { nombre: nombreTrabajador, rut: rutTrabajador, fecha_ingreso, sueldoBase, cargo, tipoContrato, afp, salud } = await trabajadorModel.findOne({ "rut": rut });
+    const trabajador = { nombreTrabajador, rutTrabajador, fecha_ingreso, cargo, tipoContrato};
+    const { monto: gratificacionLegal } = await gratificacionModel.findOne();
+    const descuentos_imponibles = { sueldo_base: sueldoBase, bono_responsabilidad: 70000, bono_asistencia: 35000, horas_extras: 46200};
+    const gratificacion = await calculoGratificacion( gratificacionLegal, descuentos_imponibles)
+    descuentos_imponibles.gratificacion = gratificacion;
+    const total_descuentos_imponibles = await calculoDescuentosLegales(descuentos_imponibles); //imponibles
+    const descAFP = await calculoAFP( afp, total_descuentos_imponibles );
+    const descSalud = await calculoSalud( salud, total_descuentos_imponibles );
+    const descSegCesantia = await calculoSeguroCesantia( tipoContrato, total_descuentos_imponibles );
+    const descuentos_legales = { afp: descAFP, salud: descSalud, seguroCesantia: descSegCesantia, caja_compensacion:0, sindicato:0, impuesto_renta:0 };
+    
+    const descImpRenta = await calculoImpuestoRenta(total_descuentos_imponibles, descuentos_legales);
+    descuentos_legales.impuesto_renta = descImpRenta;
+    const total_descuentos_legales = await calculoDescuentosLegales(descuentos_legales);
   
-  const descImpRenta = await calculoImpuestoRenta(total_descuentos_imponibles, descuentos_legales);
-  descuentos_legales.impuesto_renta = descImpRenta;
-  const total_descuentos_legales = await calculoDescuentosLegales(descuentos_legales);
+    const descuentos_no_imponibles = {};
+    const total_descuetos_no_imponibles = 0;
+    const saldo_liquido = total_descuentos_imponibles - total_descuentos_legales;
+    return  {
+      empresa,
+      fecha_liquidacion,
+      trabajador,
+      descuentos_imponibles,
+      total_descuentos_imponibles,
+      descuentos_no_imponibles,
+      total_descuetos_no_imponibles,
+      descuentos_legales,
+      total_descuentos_legales,
+      saldo_liquido,
+    };
+  } catch (error) {
+    console.log('Hems encontrado un error en la generacion', error)
+  }
 
-  const descuentos_no_imponibles = {};
-  const total_descuetos_no_imponibles = 0;
-  const saldo_liquido = total_descuentos_imponibles - total_descuentos_legales;
-  return  {
-    empresa,
-    fecha_liquidacion,
-    trabajador,
-    descuentos_imponibles,
-    total_descuentos_imponibles,
-    descuentos_no_imponibles,
-    total_descuetos_no_imponibles,
-    descuentos_legales,
-    total_descuentos_legales,
-    saldo_liquido,
-  };
 
 };
 
@@ -206,4 +229,4 @@ try {
   }
 };
 
-module.exports = { findOne, findAll, create, update, remove, addLiquidacion };
+module.exports = { findOne, findAll, create, update, remove, addLiquidacion, editLiquidacion };
