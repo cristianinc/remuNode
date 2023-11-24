@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const TopesImponiblesSchema = new mongoose.Schema(
     {
+        mes: { type: Number },
+        anio: { type: Number },
         nombre: {
             type: String
         },

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const SeguroCesantiaSchema = new mongoose.Schema(
     {
+        mes: { type: Number },
+        anio: { type: Number },
         tipoContrato: {
             type: String
         },

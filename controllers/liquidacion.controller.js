@@ -12,6 +12,7 @@ const editLiquidacion = async (req, res) => {
   try {
     const { id } = req.params;
     const liquidacion = await liquidacionModel.findById(id); 
+    console.log('====>', liquidacion);
     res.render('partials/liquidacion/edit', { liquidacion })
   } catch (e) {
     handleHttpError(res, e);
@@ -20,7 +21,6 @@ const editLiquidacion = async (req, res) => {
 
 const findOne = async (req, res) => {
   try {
-
     req = matchedData(req);
     const id = req.id;
     const data = await trabajadorModel.findById(id);

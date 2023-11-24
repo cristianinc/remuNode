@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const AsignacionFamiliarSchema = new mongoose.Schema(
     {
+        mes: { type: Number },
+        anio: { type: Number },
         tramo: {
             type: String
         },

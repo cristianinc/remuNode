@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const IndicadoresEconomicosSchema = new mongoose.Schema(
     {
+        mes: { type: Number },
+        anio: { type: Number },
         indicador: {
             type: String
         },

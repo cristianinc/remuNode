@@ -59,5 +59,5 @@ router.get("/trabajador/add", addTrabajador);
 router.get("/trabajador/edit/:id", editTrabajador);
 
 router.get("/liquidacion", addLiquidacion);
-router.get("/liquidacion/edit/:id", editLiquidacion);
+router.get("/liquidacion/edit/:id/:mes/:anio", editLiquidacion);
 module.exports = router;

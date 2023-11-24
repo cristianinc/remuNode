@@ -41,11 +41,20 @@ const generarTodasLiquidacion = async () => {
     const anio = document.getElementById('anio').value;
     const rut = [];
 
+    if( !mes ){
+        alert( " Debe seleccionar un mes " );
+    }
+
+    if( !anio ){
+        alert( " Debe seleccionar un año " );
+    }
+
     document.querySelectorAll('#formElement input[type=checkbox]').forEach(function(checkElement) {
         if(checkElement.checked){
             rut.push(checkElement.value)
         }
     });
+
     
     await generarLiquidacion( mes, anio, rut )
 
