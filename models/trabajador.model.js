@@ -17,7 +17,7 @@ const TrabajadorSchema = new mongoose.Schema(
             type: Number
         },   
         fechaIngreso: {
-            type: Date
+            type: String
         },
         cargo: {
             type: String

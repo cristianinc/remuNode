@@ -1,7 +1,7 @@
 const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError");
 const axios = require("axios");
-const { liquidacionModel, empresaModel, trabajadorModel, gratificacionModel, afpModel, saludModel, seguroCesantiaModel, impuestoSegundaCategoriaModel } = require("../models");
+const { liquidacionModel, empresaModel, trabajadorModel, gratificacionModel, afpModel, saludModel, seguroCesantiaModel, impuestoSegundaCategoriaModel, indicadoresEconomicosModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
 const { generatePdf } = require("../pdf/generatePdf");
 const { Page } = require("puppeteer");
@@ -47,14 +47,23 @@ const findAll = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-
     const { mes, anio, rut } = req.body;
+
+
+    let indicadoresEconomicos = await indicadoresEconomicosModel.find({ "mes": mes, "anio": anio });
+    
+    if( indicadoresEconomicos.length === 0 ){
+      throw new Error('No existen valores para generar la liquidación')
+    }
+
+
     let liquidacion = [];
     for ( const _rut of rut ){
         let dataLiquidacion = await generaLiquidacion( mes, anio, _rut );
         liquidacion.push( dataLiquidacion );
+        await liquidacionModel.create(dataLiquidacion);
     }
-    console.log(liquidacion)
+
 
     const htmlFile = fs.readFileSync('./views/liquidacion.hbs', 'utf8').toString();
     const template = handlebars.compile(htmlFile);
@@ -184,15 +193,6 @@ const calculoGratificacion = async (gratificacionLegal, desc_imp) => {
 
 };
 
-const calculoDescuentosLegales = async (desc_imp) => {
-
-  let total = 0;
-  for( const prop in desc_imp ){
-    total += desc_imp[prop];
-  }
-
-  return total;
-};
 
 const calculoAFP = async (afp, total_desc_imp) => {
   const { tasa_dependientes } = await afpModel.findOne({ "nombre": afp });
@@ -227,6 +227,16 @@ try {
   } catch (error) {
     console.log(error)
   }
+};
+
+const calculoDescuentosLegales = async (desc_imp) => {
+
+  let total = 0;
+  for( const prop in desc_imp ){
+    total += desc_imp[prop];
+  }
+
+  return total;
 };
 
 module.exports = { findOne, findAll, create, update, remove, addLiquidacion, editLiquidacion };

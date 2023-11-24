@@ -1,5 +1,15 @@
 const base_url = window.location.origin;
 const pathArray = window.location.pathname.split( '/' );
+const date = new Date();
+const _MES_ = date.getMonth();
+const _ANIO_ = date.getFullYear();
+
+
+
+window.onload = function() {
+    document.getElementById('mes').value = _MES_;
+    document.getElementById('anio').value = _ANIO_;
+  };
 
 function checkAll(value) {
     document.querySelectorAll('#formElement input[type=checkbox]').forEach(function(checkElement) {
@@ -7,7 +17,6 @@ function checkAll(value) {
         console.log('elementos seleccionados------>', checkElement.value, checkElement.checked)
     });
 }
-
 
 const generarLiquidacion = async ( mes, anio, rut =[] ) => {
     const data = { 
@@ -60,7 +69,6 @@ const generarTodasLiquidacion = async () => {
 
     console.log('generando liquidacion de sueldo')
 };
-
 
 const editarLiquidacion = ( trabajador ) =>{
     const mes = document.getElementById('mes').value;

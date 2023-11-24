@@ -47,15 +47,15 @@ const getAsigFamiliar = async (req, res) => {
 //   }
 // };
 
-// const findAll = async (req, res) => {
-//   try {
-//     const [, options] = optionsPaginate(req)
-//     const data = await trabajadorModel.paginate({}, options);
-//     res.send({ data });
-//   } catch (e) {
-//     handleHttpError(res, e);
-//   }
-// };
+const findAll = async (req, res) => {
+  try {
+    const [, options] = optionsPaginate(req)
+    const data = await asignacionFamiliarModel.paginate({}, options);
+    res.send({ data });
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
 
 // const create = async (req, res) => {
 //   try {
@@ -71,19 +71,16 @@ const getAsigFamiliar = async (req, res) => {
 //   }
 // };
 
-// const update = async (req, res) => {
-//     try {
-//       const { file } = req;
-//       const body = {
-//         url: `${URL_PUBLIC}/${file.filename}`,
-//         filename: file.filename,
-//       };
-//       const response = await trabajadorModel.create(body);
-//       res.send({ response });
-//     } catch (e) {
-//       handleHttpError(res, e);
-//     }
-//   };
+const update = async (req, res) => {
+  try {
+    const _id = req.params.id;
+    const data = req.body;
+    const response = await asignacionFamiliarModel.findByIdAndUpdate(_id, data, { new: true });
+    res.status(200).json({ response })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
 
 // const remove = async (req, res) => {
 //   try {
@@ -105,4 +102,4 @@ const getAsigFamiliar = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAsigFamiliar, addAsigFamiliar, editAsigFamiliar };
+module.exports = { getAsigFamiliar, addAsigFamiliar, editAsigFamiliar, findAll, update};

@@ -39,6 +39,7 @@
                         <table class="table table-bordered">
                             <thead class="text-center">
                                 <tr>
+                                    <th>Periodo</th>
                                     <th>Tramo</th>
                                     <th>Monto</th>
                                     <th>Requisito</th>
@@ -47,6 +48,7 @@
                             <tbody>
                                 {{#each data}}
                                 <tr>
+                                    <td class="d-none d-xl-table-cell text-end">{{ mes }} - {{ anio }}</td>
                                     <td class="d-none d-xl-table-cell text-end">{{ tramo }}</td>
                                     <td class="d-none d-xl-table-cell text-end">{{ monto }}</td>
                                     <td class="d-none d-xl-table-cell text-end">{{ renta }}</td>

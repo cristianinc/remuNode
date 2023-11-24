@@ -39,6 +39,7 @@
                         <table class="table table-bordered" >
                             <thead class="text-center">
                                 <tr>
+                                    <th>Periodo</th>
                                     <th>Indicador</th>
                                     <th>Valor</th>
                                 </tr>
@@ -46,6 +47,7 @@
                             <tbody>
                                 {{#each data}}
                                 <tr>
+                                    <td class="d-none d-xl-table-cell text-end">{{ mes }} - {{ anio }}</td>
                                     <td class="d-none d-xl-table-cell text-start">{{ indicador }} </td>
                                     <td class="d-none d-xl-table-cell text-end">{{ valor }} </td>
                                 </tr>

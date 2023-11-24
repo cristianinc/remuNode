@@ -1,4 +1,3 @@
-const { matchedData } = require("express-validator");
 const { handleHttpError } = require("../utils/handleError");
 const { trabajadorModel, afpModel, saludModel, tipoContratoModel } = require("../models");
 const optionsPaginate = require("../config/paginationParams");
@@ -76,6 +75,7 @@ const update = async (req, res) => {
     try {
       const _id = req.params.id;
       const data = req.body;
+      console.log( "esta es la data del Payload", data )
       const response = await trabajadorModel.findByIdAndUpdate(_id, data, { new: true });
       res.status(200).json({ response })
     } catch (e) {

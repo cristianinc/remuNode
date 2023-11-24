@@ -34,11 +34,12 @@
                 <div class="col-12 col-lg-12 col-xxl-12 d-flex">
                     <div class="card flex-fill">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Seguro Cesantia</h5>
+                            <h5 class="card-title mb-0">Seguro Cesantia {{ mes }} - {{ anio }}</h5>
                         </div>
                         <table class="table table-bordered" >
                             <thead class="text-center">
                                 <tr>
+                                    <th rowspan="2">Periodo</th>
                                     <th rowspan="2">Contrato</th>
                                     <th colspan="2">Financiamiento</th>
                                 </tr>
@@ -50,6 +51,7 @@
                             <tbody>
                                 {{#each data}}
                                 <tr>
+                                    <td class="d-none d-xl-table-cell text-end">{{ mes }} - {{ anio }}</td>
                                     <td class="d-none d-xl-table-cell text-start">{{ tipoContrato }}</td>
                                     <td class="d-none d-xl-table-cell text-end">{{ empleador }} %</td>
                                     <td class="d-none d-xl-table-cell text-end">{{ trabajador}} %</td>

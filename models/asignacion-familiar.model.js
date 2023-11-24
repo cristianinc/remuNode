@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require("mongoose-paginate-v2");
+const mongoosePaginateAggregate = require("mongoose-aggregate-paginate-v2");
+
 
 const AsignacionFamiliarSchema = new mongoose.Schema(
     {
@@ -22,5 +25,7 @@ const AsignacionFamiliarSchema = new mongoose.Schema(
         versionKey: false,
     }
 );
+AsignacionFamiliarSchema.plugin(mongoosePaginate);
+AsignacionFamiliarSchema.plugin(mongoosePaginateAggregate);
 
 module.exports = mongoose.model('asignacionfamiliar', AsignacionFamiliarSchema);
