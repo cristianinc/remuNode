@@ -12,7 +12,9 @@ const models = {
   seguroCesantiaModel: require(`./seguro-cesantia.model`),
   tipoContratoModel: require(`./tipo-contrato.model`),
   topesImponiblesModel: require(`./topes-imponibles.model`),
-  trabajadorModel: require(`./trabajador.model`)
+  trabajadorModel: require(`./trabajador.model`),
+  registroHuellasModel: require(`./registro-huellas.model`),
+  asistenciaModel: require(`./asistencia.model`),
 };
 
 
