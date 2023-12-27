@@ -6,12 +6,12 @@ const generatePdf = async ( url ) => {
         headless: 'new',
         args: ['--no-sandbox'],
         defaultViewport: {
-            width: 1080,
-            height:1600,
+            width: 1200,
+            height:800,
             deviceScaleFactor: 1,
             // isMobile: false,
             // hasTouch: false,
-            Landscape: true,
+            
         },
     });
 
@@ -24,8 +24,9 @@ const generatePdf = async ( url ) => {
     await page.setContent(url, {  waitUntil: "networkidle0" })
     const pdf = await page.pdf({
         format: "A4",
+        landscape: true,
         printBackground: true,
-        margin: { left: "0.5cm", top: "2cm", right: "0.5cm", bottom: "2cm" },
+        margin: { left: "0.5cm", top: "0.5cm", right: "0.5cm", bottom: "0.5cm" },
     });
     await browser.close();
     return pdf;

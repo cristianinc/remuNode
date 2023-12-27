@@ -2,10 +2,20 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <style>
+            @page {
+                    size: A4 landscape !important;
+                }
+                .wrapper {
+                    display: block;
+                    float: left;
+                    break-inside: avoid;
+                    }
+        </style>
     </head>
     <body>
         {{#each liquidacion}}
-        <div class="row">
+        <div class="row" >
             <div class="col-6" style="border-colort">
                 <table>
                     <tr>
@@ -19,87 +29,87 @@
                     </tr>  
 
                     <tr>
-                        <td colspan="3"><h2>LIQUIDACION SUELDO MENSUAL</h2></td>
+                        <td class="text-center" colspan="3"><h5>LIQUIDACION SUELDO MENSUAL</h5></td>
                     </tr>                                      
                     <tr>
-                        <td><h3>MES DE </h3></td>
-                        <td><h3>{{fecha_liquidacion.mes}} de {{fecha_liquidacion.anio}}</h3></td>
+                        <td><h5>MES DE </h5></td>
+                        <td><h5>{{fecha_liquidacion.mes}} de {{fecha_liquidacion.anio}}</h5></td>
                         <td>{{trabajador.cargo}}</td>
                     </tr>   
                     <tr>
-                        <td><h4>{{trabajador.nombreTrabajador}}</h4></td>
-                        <td><h4>{{trabajador.rutTrabajador}}</h4></td>
+                        <td><b>{{trabajador.nombreTrabajador}}</b></td>
+                        <td><b>{{trabajador.rutTrabajador}}</b></td>
                         <td>{{trabajador.tipoContrato}}</td>
                     </tr> 
                     <tr>
                         <td>&nbsp;</td>
                         <td>bono_responsabilidad</td>
-                        <td>{{descuentos_imponibles.bono_responsabilidad}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.bono_responsabilidad}}</td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>bono_asistencia</td>
-                        <td>{{descuentos_imponibles.bono_asistencia}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.bono_asistencia}}</td>
                     </tr>  
                     <tr>
                         <td>&nbsp;</td>
                         <td>horas_extras</td>
-                        <td>{{descuentos_imponibles.horas_extras}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.horas_extras}}</td>
                     </tr>     
                     <tr>
                         <td>&nbsp;</td>
                         <td>gratificacion</td>
-                        <td>{{descuentos_imponibles.gratificacion}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.gratificacion}}</td>
                     </tr>                                                                             
                     <tr>
                         <td colspan="2"> Total rem. imponible</td>
-                        <td>{{total_descuentos_imponibles}}</td>
+                        <td class="text-end">{{formatoPeso total_descuentos_imponibles}}</td>
                     </tr>     
                     <tr>
                         <td>&nbsp;</td>
                         <td>afp</td>
-                        <td>{{descuentos_legales.afp}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.afp}}</td>
                     </tr> 
                     <tr>
                         <td>&nbsp;</td>
                         <td>salud</td>
-                        <td>{{descuentos_legales.salud}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.salud}}</td>
                     </tr> 
                     <tr>
                         <td>&nbsp;</td>
                         <td>seguroCesantia</td>
-                        <td>{{descuentos_legales.seguroCesantia}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.seguroCesantia}}</td>
                     </tr>
                                         <tr>
                         <td>&nbsp;</td>
                         <td>caja_compensacion</td>
-                        <td>{{descuentos_legales.caja_compensacion}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.caja_compensacion}}</td>
                     </tr>
                                         <tr>
                         <td>&nbsp;</td>
                         <td>sindicato</td>
-                        <td>{{descuentos_legales.sindicato}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.sindicato}}</td>
                     </tr>
                                         <tr>
                         <td>&nbsp;</td>
                         <td>impuesto_renta</td>
-                        <td>{{descuentos_legales.impuesto_renta}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.impuesto_renta}}</td>
                     </tr>                                        
                     <tr>
                         <td colspan="2"> Total haberes</td>
-                        <td>{{total_descuentos_imponibles}}</td>
+                        <td class="text-end">{{formatoPeso total_descuentos_imponibles}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"> Total descuentos</td>
-                        <td>{{total_descuentos_legales}}</td>
+                        <td class="text-end">{{formatoPeso total_descuentos_legales}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"> Otros descuentos</td>
-                        <td>0</td>
+                        <td class="text-end">0</td>
                     </tr>                      
                     <tr>
                         <td colspan="2"> Saldo Liquido</td>
-                        <td>{{saldo_liquido}}</td>
+                        <td class="text-end">{{ formatoPeso saldo_liquido}}</td>
                     </tr> 
                     <tr>
                         <td colspan="3" >
@@ -113,7 +123,7 @@
                     </tr>                                                           
                 </table>
             </div>
-            <div class="col-6" style="border-colort">
+            <div class="col-6 wrapper" style="border-colort">
                 <table>
                     <tr>
                         <td>{{empresa.nombre}}</td>
@@ -126,87 +136,87 @@
                     </tr>  
 
                     <tr>
-                        <td colspan="3"><h2>LIQUIDACION SUELDO MENSUAL</h2></td>
+                        <td class="text-center" colspan="3"><h5>LIQUIDACION SUELDO MENSUAL</h5></td>
                     </tr>                                      
                     <tr>
-                        <td><h3>MES DE </h3></td>
-                        <td><h3>{{fecha_liquidacion.mes}} de {{fecha_liquidacion.anio}}</h3></td>
+                        <td><h5>MES DE </h5></td>
+                        <td><h5>{{fecha_liquidacion.mes}} de {{fecha_liquidacion.anio}}</h5></td>
                         <td>{{trabajador.cargo}}</td>
                     </tr>   
                     <tr>
-                        <td><h4>{{trabajador.nombreTrabajador}}</h4></td>
-                        <td><h4>{{trabajador.rutTrabajador}}</h4></td>
+                        <td><b>{{trabajador.nombreTrabajador}}</b></td>
+                        <td><b>{{trabajador.rutTrabajador}}</b></td>
                         <td>{{trabajador.tipoContrato}}</td>
                     </tr> 
                     <tr>
                         <td>&nbsp;</td>
                         <td>bono_responsabilidad</td>
-                        <td>{{descuentos_imponibles.bono_responsabilidad}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.bono_responsabilidad}}</td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>bono_asistencia</td>
-                        <td>{{descuentos_imponibles.bono_asistencia}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.bono_asistencia}}</td>
                     </tr>  
                     <tr>
                         <td>&nbsp;</td>
                         <td>horas_extras</td>
-                        <td>{{descuentos_imponibles.horas_extras}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.horas_extras}}</td>
                     </tr>     
                     <tr>
                         <td>&nbsp;</td>
                         <td>gratificacion</td>
-                        <td>{{descuentos_imponibles.gratificacion}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_imponibles.gratificacion}}</td>
                     </tr>                                                                             
                     <tr>
                         <td colspan="2"> Total rem. imponible</td>
-                        <td>{{total_descuentos_imponibles}}</td>
+                        <td class="text-end">{{formatoPeso total_descuentos_imponibles}}</td>
                     </tr>     
                     <tr>
                         <td>&nbsp;</td>
                         <td>afp</td>
-                        <td>{{descuentos_legales.afp}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.afp}}</td>
                     </tr> 
                     <tr>
                         <td>&nbsp;</td>
                         <td>salud</td>
-                        <td>{{descuentos_legales.salud}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.salud}}</td>
                     </tr> 
                     <tr>
                         <td>&nbsp;</td>
                         <td>seguroCesantia</td>
-                        <td>{{descuentos_legales.seguroCesantia}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.seguroCesantia}}</td>
                     </tr>
                                         <tr>
                         <td>&nbsp;</td>
                         <td>caja_compensacion</td>
-                        <td>{{descuentos_legales.caja_compensacion}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.caja_compensacion}}</td>
                     </tr>
                                         <tr>
                         <td>&nbsp;</td>
                         <td>sindicato</td>
-                        <td>{{descuentos_legales.sindicato}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.sindicato}}</td>
                     </tr>
                                         <tr>
                         <td>&nbsp;</td>
                         <td>impuesto_renta</td>
-                        <td>{{descuentos_legales.impuesto_renta}}</td>
+                        <td class="text-end">{{ formatoPeso descuentos_legales.impuesto_renta}}</td>
                     </tr>                                        
                     <tr>
                         <td colspan="2"> Total haberes</td>
-                        <td>{{total_descuentos_imponibles}}</td>
+                        <td class="text-end">{{formatoPeso total_descuentos_imponibles}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"> Total descuentos</td>
-                        <td>{{total_descuentos_legales}}</td>
+                        <td class="text-end">{{formatoPeso total_descuentos_legales}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"> Otros descuentos</td>
-                        <td>0</td>
+                        <td class="text-end">0</td>
                     </tr>                      
                     <tr>
                         <td colspan="2"> Saldo Liquido</td>
-                        <td>{{saldo_liquido}}</td>
+                        <td class="text-end">{{ formatoPeso saldo_liquido}}</td>
                     </tr> 
                     <tr>
                         <td colspan="3" >
@@ -219,7 +229,7 @@
                         </td>
                     </tr>                                                           
                 </table>
-            </div>         
+            </div>     
         </div>
         {{/each}}
     </body>
