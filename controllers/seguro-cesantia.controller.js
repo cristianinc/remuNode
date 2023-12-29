@@ -58,19 +58,14 @@ const getSeguroCesantia = async (req, res) => {
 //   }
 // };
 
-// const create = async (req, res) => {
-//   try {
-//     const { file } = req;
-//     const body = {
-//       url: `${URL_PUBLIC}/${file.filename}`,
-//       filename: file.filename,
-//     };
-//     const response = await trabajadorModel.create(body);
-//     res.send({ response });
-//   } catch (e) {
-//     handleHttpError(res, e);
-//   }
-// };
+const create = async (req, res) => {
+  try {
+    const response = await seguroCesantiaModel.create(req.body);
+    res.status(200).json({ response })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
 
 // const update = async (req, res) => {
 //     try {
@@ -106,4 +101,4 @@ const getSeguroCesantia = async (req, res) => {
 //   }
 // };
 
-module.exports = { getSeguroCesantia, addSeguroCesantia, editSeguroCesantia };
+module.exports = { getSeguroCesantia, addSeguroCesantia, editSeguroCesantia, create };

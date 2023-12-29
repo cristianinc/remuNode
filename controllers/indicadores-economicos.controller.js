@@ -57,19 +57,14 @@ const getIndEconomicos = async (req, res) => {
 //   }
 // };
 
-// const create = async (req, res) => {
-//   try {
-//     const { file } = req;
-//     const body = {
-//       url: `${URL_PUBLIC}/${file.filename}`,
-//       filename: file.filename,
-//     };
-//     const response = await trabajadorModel.create(body);
-//     res.send({ response });
-//   } catch (e) {
-//     handleHttpError(res, e);
-//   }
-// };
+const create = async (req, res) => {
+  try {
+    const response = await indicadoresEconomicosModel.create(req.body);
+    res.status(200).json({ response })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
 
 // const update = async (req, res) => {
 //     try {
@@ -105,4 +100,4 @@ const getIndEconomicos = async (req, res) => {
 //   }
 // };
 
-module.exports = { getIndEconomicos, addIndEconomicos, editIndEconomicos };
+module.exports = { getIndEconomicos, addIndEconomicos, editIndEconomicos, create };

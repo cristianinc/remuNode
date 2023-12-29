@@ -57,19 +57,14 @@ const findAll = async (req, res) => {
   }
 };
 
-// const create = async (req, res) => {
-//   try {
-//     const { file } = req;
-//     const body = {
-//       url: `${URL_PUBLIC}/${file.filename}`,
-//       filename: file.filename,
-//     };
-//     const response = await trabajadorModel.create(body);
-//     res.send({ response });
-//   } catch (e) {
-//     handleHttpError(res, e);
-//   }
-// };
+const create = async (req, res) => {
+  try {
+    const response = await asignacionFamiliarModel.create(req.body);
+    res.status(200).json({ response })
+  } catch (e) {
+    handleHttpError(res, e);
+  }
+};
 
 const update = async (req, res) => {
   try {
@@ -102,4 +97,4 @@ const update = async (req, res) => {
 //   }
 // };
 
-module.exports = { getAsigFamiliar, addAsigFamiliar, editAsigFamiliar, findAll, update};
+module.exports = { getAsigFamiliar, addAsigFamiliar, editAsigFamiliar, findAll, update, create};

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router(); 
-const  { findAll, update } = require('../controllers/asignacion-familiar.controller');
+const  { findAll, update, create } = require('../controllers/asignacion-familiar.controller');
 
-// router.post("/", create);
+router.post("/", create);
 router.get("/", findAll);
 // router.get("/:id", findOne);
 router.put("/:id", update);
